@@ -152,7 +152,7 @@
 
 
   <script>
-    @if(Session::has('message'))
+    if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
     switch(type){
        case 'info':
@@ -168,7 +168,7 @@
        toastr.error(" {{ Session::get('message') }} ");
        break;
     }
-    @endif
+    endif
    </script>
 </body>
 </html>

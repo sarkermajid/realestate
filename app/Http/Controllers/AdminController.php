@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -45,21 +46,49 @@ class AdminController extends Controller
         $profile->email = $request->email;
         $profile->phone = $request->phone;
         $profile->address = $request->address;
-        // Image upload
-        if($request->hasFile('photo')){
-            $photo = $request->file('photo');
-            $photo_name = $profile->slug.time().'.'.$photo->getClientOriginalExtension();
-            $photo->move('uploads/admin_images/', $photo_name);
-            $profile->photo = $photo_name;
+        if($request->file('photo')){
+            $file = $request->file('photo');
+            @unlink(public_path('uploads/admin_images/'.$profile->photo));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move('uploads/admin_images/', $filename);
+            $profile->photo = $filename;
         }
         $profile->save();
-
         $notification = array(
-            'message' => 'Admin Profile Updated Successfully',
+            'message' => 'Profile Updated Successfully',
             'alert-type' => 'success'
         );
-
         return redirect()->back()->with($notification);
+    }
 
+    public function AdminChangePassword()
+    {
+        $profile = User::find(auth()->user()->id);
+        return view('admin.admin_change_password',compact('profile'));
+    }
+
+    public function AdminUpdatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            $notification = array(
+                'message' => 'Old Password Does Not Match',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }else{
+            User::whereId(auth()->user()->id)->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+            $notification = array(
+                'message' => 'Password Change Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        }
     }
 }
