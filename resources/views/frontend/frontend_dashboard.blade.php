@@ -40,11 +40,11 @@
     <div class="boxed_wrapper">
 
         <!-- Main Header Start -->
-        @include('frontend.body.header')
+        @include('frontend.home.header')
         <!-- Main Header End-->
 
         <!-- Mobile Menu  -->
-        @include('frontend.body.mobile_menu')
+        @include('frontend.home.mobile_menu')
         <!-- End Mobile Menu -->
 
 
@@ -52,7 +52,7 @@
 
 
         <!-- main-footer -->
-        @include('frontend.body.footer')
+        @include('frontend.home.footer')
         <!-- main-footer end -->
 
 
