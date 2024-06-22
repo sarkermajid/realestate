@@ -19,7 +19,7 @@
                             <li><a href="index.html"><i class="fab fa-vimeo-v"></i></a></li>
                         </ul>
                         <div class="sign-box">
-                            @if(!auth()->user()->id)
+                            @if(!auth()->user())
                             <a href="{{ route('login') }}"><i class="fas fa-user"></i>Sign In/Sign Up</a>
                             @else
                             <a href="{{ route('dashboard') }}"><i class="fas fa-user"></i>{{ auth()->user()->name }}</a>
