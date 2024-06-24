@@ -55,9 +55,6 @@
                                             <button type="submit" class="theme-btn btn-one">Sign in</button>
                                         </div>
                                     </form>
-                                    <div class="othre-text">
-                                        <p>Have not any account? <a href="signup.html">Register Now</a></p>
-                                    </div>
                                 </div>
                             </div>
                             <div class="tab" id="tab-2">
@@ -85,9 +82,6 @@
                                             <button type="submit" class="theme-btn btn-one">Sign Up</button>
                                         </div>
                                     </form>
-                                    <div class="othre-text">
-                                        <p>Have not any account? <a href="signup.html">Register Now</a></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>

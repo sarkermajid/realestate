@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="photo" class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control" id="photo" value="{{ $profile->address }}">
+                                    <input type="file" name="photo" class="form-control" id="photo" value="{{ $profile->photo }}">
                                 </div>
                                 <div class="mb-3">
                                     <img id="showPhoto" class="wd-100 rounded-circle"

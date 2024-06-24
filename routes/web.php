@@ -19,18 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('frontend.dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('user/profile', [UserController::class, 'UserProfile'])->name('user.profile');
+    Route::post('user/profile/update', [UserController::class, 'UserProfileUpdate'])->name('user.profile.update');
+
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [UserController::class, 'index'])->name('home');
 
 Route::middleware(['auth','role:admin'])->group(function(){
 
@@ -40,6 +41,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('admin/profile/update', [AdminController::class, 'AdminProfileUpdate'])->name('admin.profile.update');
     Route::get('admin/change-password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('admin/update-password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
+
 });
 
 Route::middleware(['auth','role:agent'])->group(function(){
