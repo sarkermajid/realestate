@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,8 +20,34 @@ class UserController extends Controller
         return view('frontend.dashboard.edit_profile',compact('profile'));
     }
 
-    public function UserProfileUpdate(Request $request,$id)
+    public function UserProfileUpdate(Request $request)
     {
+        $profile = User::find(auth()->user()->id);
+        $profile->name = $request->name;
+        $profile->username = $request->username;
+        $profile->email = $request->email;
+        $profile->phone = $request->phone;
+        $profile->address = $request->address;
+        if($request->file('photo')){
+            $file = $request->file('photo');
+            @unlink(public_path('uploads/user_images/'.$profile->photo));
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move('uploads/user_images/', $filename);
+            $profile->photo = $filename;
+        }
+        $profile->save();
+        $notification = array(
+            'message' => 'Profile Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 
+    public function UserLogout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

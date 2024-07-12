@@ -59,14 +59,15 @@
                                     <form action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data" class="default-form">
                                         @csrf
                                         <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" name="name" value="{{ ucfirst($profile->name) }}">
+                                        </div>
+
+                                        <div class="form-group">
                                             <label>Username</label>
                                             <input type="text" name="username" value="{{ $profile->username }}">
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" name="name" value="{{ $profile->name }}">
-                                        </div>
                                         <div class="form-group">
                                             <label>Email</label>
                                             <input type="email" name="email" value="{{ $profile->email }}">
@@ -89,7 +90,7 @@
 
                                         <div class="form-group">
                                             <img id="showPhoto" class="wd-100 rounded-circle"
-                                            src="{{ !empty($profile->photo) ? url('uploads/admin_images/'.$profile->photo) : url('uploads/no_image.jpg') }}"
+                                            src="{{ !empty($profile->photo) ? url('uploads/user_images/'.$profile->photo) : url('uploads/no_image.jpg') }}"
                                             alt="profile" width="150">
                                         </div>
 
