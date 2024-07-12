@@ -6,10 +6,10 @@
         style="background-image: url({{ asset('frontend/assets/images/background/page-title-5.jpg') }});">
         <div class="auto-container">
             <div class="content-box clearfix">
-                <h1>User Profile </h1>
+                <h1>Change Password </h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="index.html">Home</a></li>
-                    <li>User Profile </li>
+                    <li>Change Password </li>
                 </ul>
             </div>
         </div>
@@ -21,11 +21,17 @@
     <section class="sidebar-page-container blog-details sec-pad-2">
         <div class="auto-container">
             <div class="row clearfix">
+                @php
+
+                    $id = Auth::user()->id;
+                    $profile = App\Models\User::find($id);
+
+                @endphp
                 <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
                     <div class="blog-sidebar">
                         <div class="sidebar-widget post-widget">
                             <div class="widget-title">
-                                <h4>User Profile </h4>
+                                <h4>Change Password </h4>
                             </div>
                             <div class="post-inner">
                                 <div class="post">
@@ -50,42 +56,28 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
-                                    <form action="{{ route('user.profile.update') }}" method="post" enctype="multipart/form-data" class="default-form">
+                                    <form action="{{ route('user.update.password') }}" method="post" class="default-form">
                                         @csrf
                                         <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" name="name" value="{{ ucfirst($profile->name) }}">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Username</label>
-                                            <input type="text" name="username" value="{{ $profile->username }}">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" name="email" value="{{ $profile->email }}">
+                                            <label for="old_password" class="form-label">Old Password</label>
+                                            <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror"  id="old_password">
+                                            @error('old_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label>Phone</label>
-                                            <input type="text" name="phone" value="{{ $profile->phone }}">
+                                            <label for="new_password" class="form-label">New Password</label>
+                                            <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" autocomplete="off">
+                                            @error('new_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-
                                         <div class="form-group">
-                                            <label>Address</label>
-                                            <input type="text" name="address" value="{{ $profile->address }}">
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="photo" class="form-label">Image</label>
-                                            <input class="form-control" name="photo" type="file" id="photo">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <img id="showPhoto" class="wd-100 rounded-circle"
-                                            src="{{ !empty($profile->photo) ? url('uploads/user_images/'.$profile->photo) : url('uploads/no_image.jpg') }}"
-                                            alt="profile" width="150">
+                                            <label for="new_password_confirmation" class="form-label">Confirm Password</label>
+                                            <input type="password" name="new_password_confirmation" class="form-control @error('new_password_confirmation') is-invalid @enderror" id="new_password_confirmation" autocomplete="off">
+                                            @error('new_password_confirmation')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         <div class="form-group message-btn">
@@ -127,17 +119,5 @@
         </div>
     </section>
     <!-- subscribe-section end -->
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#photo').change(function(e){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    $('#showPhoto').attr('src',e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
-            });
-        });
-    </script>
 
 @endsection
