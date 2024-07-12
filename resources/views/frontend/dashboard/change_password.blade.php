@@ -60,21 +60,21 @@
                                         @csrf
                                         <div class="form-group">
                                             <label for="old_password" class="form-label">Old Password</label>
-                                            <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror"  id="old_password">
+                                            <input type="password" name="old_password" placeholder="********" class="form-control @error('old_password') is-invalid @enderror"  id="old_password">
                                             @error('old_password')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="new_password" class="form-label">New Password</label>
-                                            <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror" id="new_password" autocomplete="off">
+                                            <input type="password" name="new_password" placeholder="********" class="form-control @error('new_password') is-invalid @enderror" id="new_password" autocomplete="off">
                                             @error('new_password')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="new_password_confirmation" class="form-label">Confirm Password</label>
-                                            <input type="password" name="new_password_confirmation" class="form-control @error('new_password_confirmation') is-invalid @enderror" id="new_password_confirmation" autocomplete="off">
+                                            <input type="password" name="new_password_confirmation" placeholder="********" class="form-control @error('new_password_confirmation') is-invalid @enderror" id="new_password_confirmation" autocomplete="off">
                                             @error('new_password_confirmation')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
