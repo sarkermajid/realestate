@@ -28,8 +28,8 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->icon }}</td>
                                             <td>
-                                                <a href="" class="btn btn-inverse-warning"> Edit </a>
-                                                <a href="" class="btn btn-inverse-danger"> Delete </a>
+                                                <a href="{{ route('edit.type',['id'=>$item->id]) }}" class="btn btn-inverse-warning"> Edit </a>
+                                                <a href="{{ route('delete.type',['id'=>$item->id]) }}" id="delete" class="btn btn-inverse-danger"> Delete </a>
                                             </td>
                                         </tr>
                                     @endforeach

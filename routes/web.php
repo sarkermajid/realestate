@@ -50,6 +50,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('all/types', 'AllTypes')->name('all.types');
         Route::get('add/type', 'AddType')->name('add.type');
         Route::post('store/type', 'StoreType')->name('store.type');
+        Route::get('edit/type/{id}', 'EditType')->name('edit.type');
+        Route::post('update/type', 'UpdateType')->name('update.type');
+        Route::get('delete/type/{id}', 'DeleteType')->name('delete.type');
     });
 
 });
