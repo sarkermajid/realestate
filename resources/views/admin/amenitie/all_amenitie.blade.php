@@ -26,8 +26,8 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>
-                                                <a href="{{ route('edit.type',['id'=>$item->id]) }}" class="btn btn-inverse-warning"> Edit </a>
-                                                <a href="{{ route('delete.type',['id'=>$item->id]) }}" id="delete" class="btn btn-inverse-danger"> Delete </a>
+                                                <a href="{{ route('edit.amenitie',['id'=>$item->id]) }}" class="btn btn-inverse-warning"> Edit </a>
+                                                <a href="{{ route('delete.amenitie',['id'=>$item->id]) }}" id="delete" class="btn btn-inverse-danger"> Delete </a>
                                             </td>
                                         </tr>
                                     @endforeach

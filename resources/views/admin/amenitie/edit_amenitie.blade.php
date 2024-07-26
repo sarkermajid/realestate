@@ -7,16 +7,13 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Add Property Type</h6>
-                        <form method="POST" action="{{ route('store.type') }}" class="forms-sample" id="myForm" enctype="multipart/form-data">
+                        <h6 class="card-title">Edit Amenitie</h6>
+                        <form method="POST" action="{{ route('update.amenitie') }}" class="forms-sample" id="myForm" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $amenitie->id }}">
                             <div class="form-group mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control id="name">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="icon" class="form-label">Icon</label>
-                                <input type="text" name="icon" class="form-control id="icon">
+                                <input type="text" name="name" value="{{ $amenitie->name }}" class="form-control id="name">
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                         </form>
@@ -34,18 +31,11 @@
                 name: {
                     required : true,
                 },
-                icon: {
-                    required : true,
-                },
             },
             messages :{
                 name: {
-                    required : 'Please Enter Property Type Name',
+                    required : 'Please Enter Amenitie Name',
                 },
-                icon: {
-                    required : 'Please Enter Property Type Icon',
-                },
-
             },
             errorElement : 'span',
             errorPlacement: function (error,element) {
