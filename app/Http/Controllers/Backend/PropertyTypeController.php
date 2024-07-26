@@ -35,7 +35,6 @@ class PropertyTypeController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('all.types')->with($notification);
-
     }
 
     public function EditType($id)

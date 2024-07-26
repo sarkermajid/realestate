@@ -32,9 +32,8 @@
                   <a href="{{ route('all.types') }}" class="nav-link">All Type</a>
                 </li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">Add Type</a>
+                  <a href="{{ route('add.type') }}" class="nav-link">Add Type</a>
                 </li>
-
               </ul>
             </div>
           </li>
@@ -71,10 +70,10 @@
             <div class="collapse" id="amenitie">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="" class="nav-link">All Amenitie</a>
+                  <a href="{{ route('all.amenitie') }}" class="nav-link">All Amenitie</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/read.html" class="nav-link">Add Amenitie</a>
+                  <a href="{{ route('add.amenitie') }}" class="nav-link">Add Amenitie</a>
                 </li>
 
               </ul>
