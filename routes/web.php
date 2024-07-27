@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\AmenitieController;
+use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -66,6 +67,15 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('edit/amenitie/{id}', 'EditAmenitie')->name('edit.amenitie');
         Route::post('update/amenitie', 'UpdateAmenitie')->name('update.amenitie');
         Route::get('delete/amenitie/{id}', 'DeleteAmenitie')->name('delete.amenitie');
+    });
+
+    Route::controller(PropertyController::class)->group(function(){
+        Route::get('all/property', 'AllProperty')->name('all.property');
+        Route::get('add/property', 'AddProperty')->name('add.property');
+        Route::post('store/property', 'StoreProperty')->name('store.property');
+        Route::get('edit/property/{id}', 'EditProperty')->name('edit.property');
+        Route::post('update/property', 'UpdateProperty')->name('update.property');
+        Route::get('delete/property/{id}', 'DeleteProperty')->name('delete.property');
     });
 
 });
