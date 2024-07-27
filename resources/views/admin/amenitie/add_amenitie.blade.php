@@ -11,8 +11,8 @@
                         <form method="POST" action="{{ route('store.amenitie') }}" id="myForm" class="forms-sample" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control id="name">
+                                <label for="name" class="form-label">Amenitie Name</label>
+                                <input type="text" name="name" class="form-control" id="name">
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                         </form>
@@ -23,6 +23,7 @@
     </div>
 </div>
 
+// js validation error show
 <script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('max_price')->nullable();
             $table->string('size')->nullable();
             $table->string('video')->nullable();
-            $table->string('status')->default(0);
+            $table->string('property_status')->nullable();
             $table->string('property_thumbnail');
             $table->text('short_des')->nullable();
             $table->text('long_des')->nullable();
@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('longitude')->nullable();
             $table->string('featured')->nullable();
             $table->string('hot')->nullable();
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

@@ -11,12 +11,12 @@
                         <form method="POST" action="{{ route('store.type') }}" class="forms-sample" id="myForm" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control id="name">
+                                <label for="name" class="form-label">Property Type Name</label>
+                                <input type="text" name="name" class="form-control" id="name">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="icon" class="form-label">Icon</label>
-                                <input type="text" name="icon" class="form-control id="icon">
+                                <input type="text" name="icon" class="form-control" id="icon">
                             </div>
                             <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                         </form>
@@ -27,6 +27,7 @@
     </div>
 </div>
 
+// js validation error show
 <script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({
