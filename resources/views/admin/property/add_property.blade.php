@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="icon" class="form-label">Icon</label>
+                                        <label for="icon" class="form-label">Propery Status</label>
                                         <select name="property_status" class="form-select" id="property_status">
                                             <option selected disabled>Select Status</option>
                                             <option value="rent">For Rent</option>
@@ -57,8 +57,120 @@
                                     <div class="form-group mb-3">
                                         <label for="max_price" class="form-label">Multiple Image</label>
                                         <input type="file" name="multi_img[]" class="form-control" id="multiImg" multiple="" >
-
                                         <div class="row" id="preview_img"> </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="bedrooms" class="form-label">Bedrooms</label>
+                                        <input type="number" name="bedrooms" class="form-control" id="bedrooms">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="birthrooms" class="form-label">Birthrooms</label>
+                                        <input type="number" name="birthrooms" class="form-control" id="birthrooms">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="garage" class="form-label">Garage</label>
+                                        <input type="text" name="garage" class="form-control" id="garage">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="garage_size" class="form-label">Garage Size</label>
+                                        <input type="text" name="garage_size" class="form-control" id="garage_size">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" name="address" class="form-control" id="address">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="city" class="form-label">City</label>
+                                        <input type="text" name="city" class="form-control" id="city">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="state" class="form-label">State</label>
+                                        <input type="text" name="state" class="form-control" id="state">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group mb-3">
+                                        <label for="postal_code" class="form-label">Postal Code</label>
+                                        <input type="text" name="postal_code" class="form-control" id="postal_code">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="size" class="form-label">Property Size</label>
+                                        <input type="text" name="size" class="form-control" id="size">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="video" class="form-label">Property Video</label>
+                                        <input type="text" name="video" class="form-control" id="video">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="neighbourhood" class="form-label">Neighbourhood</label>
+                                        <input type="text" name="neighbourhood" class="form-control" id="neighbourhood">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="latitude" class="form-label">Latitude</label>
+                                        <input type="text" name="latitude" class="form-control" id="latitude">
+                                        <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Latitude from address</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="longitude" class="form-label">Longitude</label>
+                                        <input type="text" name="longitude" class="form-control" id="longitude">
+                                        <a href="https://www.latlong.net/convert-address-to-lat-long.html" target="_blank">Go here to get Longitude from address</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="size" class="form-label">Property Type</label>
+                                        <input type="text" name="size" class="form-control" id="size">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="video" class="form-label">Property Amenitie</label>
+                                        <input type="text" name="video" class="form-control" id="video">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group mb-3">
+                                        <label for="neighbourhood" class="form-label">Agent</label>
+                                        <input type="text" name="neighbourhood" class="form-control" id="neighbourhood">
                                     </div>
                                 </div>
                             </div>
