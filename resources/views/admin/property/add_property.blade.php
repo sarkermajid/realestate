@@ -157,21 +157,68 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group mb-3">
-                                        <label for="size" class="form-label">Property Type</label>
-                                        <input type="text" name="size" class="form-control" id="size">
+                                        <label for="ptype_id" class="form-label">Property Type</label>
+                                        <select name="ptype_id" class="form-select" id="ptype_id">
+                                            <option selected disabled>Select Property Type</option>
+                                            @foreach ($propertyTypes as $propertyType)
+                                            <option value="{{ $propertyType->id }}">{{ $propertyType->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-3">
-                                        <label for="video" class="form-label">Property Amenitie</label>
-                                        <input type="text" name="video" class="form-control" id="video">
+                                        <label for="amenitie_id" class="form-label">Property Amenitie</label>
+                                        <select name="amenitie_id[]" class="js-example-basic-multiple form-select" multiple="multiple" id="amenitie_id">
+                                            @foreach ($amenities as $amenity)
+                                            <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-3">
-                                        <label for="neighbourhood" class="form-label">Agent</label>
-                                        <input type="text" name="neighbourhood" class="form-control" id="neighbourhood">
+                                        <label for="agent_id" class="form-label">Agent</label>
+                                        <select name="agent_id" class="form-select" id="agent_id">
+                                            <option selected disabled>Select Agent</option>
+                                            @foreach ($activeAgents as $agent)
+                                            <option value="{{ $agent->id }}">{{ $agent->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label for="latitude" class="form-label">Short Description</label>
+                                        <textarea name="short_des" class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <label for="latitude" class="form-label">Long Description</label>
+                                        <textarea name="long_des" class="form-control" id="tinymceExample" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" name="featured" value="1" class="form-check-input" id="checkInline1">
+                                    <label class="form-check-label" for="checkInline1">
+                                       Features Property
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="checkbox" name="hot" value="1" class="form-check-input" id="checkInline">
+                                    <label class="form-check-label" for="checkInline">
+                                        Hot Property
+                                    </label>
                                 </div>
                             </div>
 

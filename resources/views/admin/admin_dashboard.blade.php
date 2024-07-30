@@ -18,6 +18,7 @@
   <!-- End fonts -->
 
 
+  {{-- select 2 css and jquery --}}
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/select2/select2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
 
@@ -118,8 +119,10 @@
  @endif
 </script>
 
+  {{-- sweetalert --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="{{ asset('backend/assets/js/code/code.js') }}"></script>
+  {{-- js form validation --}}
   <script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 
   <!-- Start datatables -->
