@@ -48,7 +48,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
-                                            <label for="min_price" class="form-label">Main Thumbnail Image</label>
+                                            <label for="min_price" class="form-label">Thumbnail Image</label>
                                             <input type="file" name="property_thambnail" class="form-control"
                                                 id="propertyThumbnail">
 
@@ -69,13 +69,13 @@
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="bedrooms" class="form-label">Bedrooms</label>
-                                            <input type="number" name="bedrooms" class="form-control" id="bedrooms">
+                                            <input type="text" name="bedrooms" class="form-control" id="bedrooms">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="birthrooms" class="form-label">Birthrooms</label>
-                                            <input type="number" name="birthrooms" class="form-control" id="birthrooms">
+                                            <input type="text" name="birthrooms" class="form-control" id="birthrooms">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -328,16 +328,40 @@
                     name: {
                         required: true,
                     },
-                    icon: {
+                    property_status: {
+                        required: true,
+                    },
+                    min_price: {
+                        required: true,
+                    },
+                    max_price: {
+                        required: true,
+                    },
+                    property_thumbnail: {
+                        required: true,
+                    },
+                    ptype_id: {
                         required: true,
                     },
                 },
                 messages: {
                     name: {
-                        required: 'Please Enter Property Type Name',
+                        required: 'Please Enter Property Name',
                     },
-                    icon: {
-                        required: 'Please Enter Property Type Icon',
+                    property_status: {
+                        required: 'Please Enter Property Status',
+                    },
+                    min_price: {
+                        required: 'Please Enter Minimum Price',
+                    },
+                    max_price: {
+                        required: 'Please Enter Maximum Price',
+                    },
+                    property_thumbnail: {
+                        required: 'Please Enter Thumbnail Image',
+                    },
+                    ptype_id: {
+                        required: 'Please Select Property Type',
                     },
 
                 },
