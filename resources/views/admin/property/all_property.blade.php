@@ -33,7 +33,7 @@
                                             <td>{{ $item->ptype_id }}</td>
                                             <td>{{ $item->city }}</td>
                                             <td>
-                                                @if($tiem->status == 1)
+                                                @if($item->status == 1)
                                                 <span class="badge rounded-pill bg-success">Active</span>
                                                 @else
                                                 <span class="badge rounded-pill bg-danger">Inactive</span>

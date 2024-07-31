@@ -49,7 +49,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="min_price" class="form-label">Thumbnail Image</label>
-                                            <input type="file" name="property_thambnail" class="form-control"
+                                            <input type="file" name="property_thumbnail" class="form-control"
                                                 id="propertyThumbnail">
 
                                             <img src="" id="showPhoto">
@@ -74,8 +74,8 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
-                                            <label for="birthrooms" class="form-label">Birthrooms</label>
-                                            <input type="text" name="birthrooms" class="form-control" id="birthrooms">
+                                            <label for="bathrooms" class="form-label">Bathrooms</label>
+                                            <input type="text" name="bathrooms" class="form-control" id="bathrooms">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -325,24 +325,24 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    name: {
-                        required: true,
-                    },
-                    property_status: {
-                        required: true,
-                    },
-                    min_price: {
-                        required: true,
-                    },
-                    max_price: {
-                        required: true,
-                    },
-                    property_thumbnail: {
-                        required: true,
-                    },
-                    ptype_id: {
-                        required: true,
-                    },
+                    // name: {
+                    //     required: true,
+                    // },
+                    // property_status: {
+                    //     required: true,
+                    // },
+                    // min_price: {
+                    //     required: true,
+                    // },
+                    // max_price: {
+                    //     required: true,
+                    // },
+                    // property_thumbnail: {
+                    //     required: true,
+                    // },
+                    // ptype_id: {
+                    //     required: true,
+                    // },
                 },
                 messages: {
                     name: {
