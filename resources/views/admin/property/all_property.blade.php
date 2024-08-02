@@ -15,23 +15,25 @@
                             <table id="dataTableExample" class="table">
                                 <thead>
                                     <tr>
-                                        <th>Sl </th>
-                                        <th>Image </th>
-                                        <th>Name </th>
-                                        <th>Type </th>
-                                        <th>City </th>
-                                        <th>Status </th>
-                                        <th>Action </th>
+                                        <th>Sl</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Property Type</th>
+                                        <th>City</th>
+                                        <th>Code</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($properties as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td><img src="{{ asset($item->property_thumbnail) }}" style="width: 70px; height:40px;" alt=""></td>
+                                            <td><img src="{{ asset($item->property_thumbnail) }}" style="width: 50px; height:50px;" alt=""></td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->ptype_id }}</td>
+                                            <td>{{ $item->PropertyType->name }}</td>
                                             <td>{{ $item->city }}</td>
+                                            <td>{{ $item->code }}</td>
                                             <td>
                                                 @if($item->status == 1)
                                                 <span class="badge rounded-pill bg-success">Active</span>

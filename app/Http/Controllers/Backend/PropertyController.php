@@ -59,7 +59,7 @@ class PropertyController extends Controller
         // Image upload with resize
         if ($request->hasFile('property_thumbnail')) {
             $image = $request->file('property_thumbnail');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imageName = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             $image->move('uploads/property/thumbnail', $imageName);
 
             // Initialize ImageManager instance
@@ -104,7 +104,7 @@ class PropertyController extends Controller
             $images = $request->file('multi_img');
             foreach($images as $image){
                 if($image->isValid()){
-                    $make_name = time() . '.' . $image->getClientOriginalExtension();
+                    $make_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
                     $image->move(public_path('uploads/property/multi-images'), $make_name);
                     // Initialize ImageManager instance
                     $imageManager2 =  new ImageManager(new Driver());
@@ -139,6 +139,21 @@ class PropertyController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('all.property')->with($notification);
+
+    }
+
+    public function EditProperty($id)
+    {
+        $property = Property::findOrfail($id);
+        $propertyTypes = PropertyType::latest()->get();
+        $amenities = Amenities::latest()->get();
+        $activeAgents = User::where('status', 'active')->where('role','agent')->latest()->get();
+
+        return view('admin.property.edit_property',compact(
+            'property',
+            'propertyTypes',
+            'amenities',
+            'activeAgents'));
 
     }
 }

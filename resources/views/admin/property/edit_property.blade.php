@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">Add Property</h6>
+                            <h6 class="card-title">Edit Property</h6>
                             <form method="POST" action="{{ route('store.property') }}" class="forms-sample" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -15,7 +15,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="name" class="form-label">Property Name</label>
-                                            <input type="text" name="name" class="form-control" id="name">
+                                            <input type="text" name="name" value="{{ $property->name }}" class="form-control" id="name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -34,33 +34,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="min_price" class="form-label">Minimum Price</label>
-                                            <input type="text" name="min_price" class="form-control" id="min_price">
+                                            <input type="text" name="min_price" value="{{ $property->min_price }}" class="form-control" id="min_price">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="max_price" class="form-label">Maximum Price</label>
-                                            <input type="text" name="max_price" class="form-control" id="max_price">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="min_price" class="form-label">Thumbnail Image</label>
-                                            <input type="file" name="property_thumbnail" class="form-control"
-                                                id="propertyThumbnail">
-
-                                            <img src="" id="showPhoto">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="max_price" class="form-label">Multiple Image</label>
-                                            <input type="file" name="multi_img[]" class="form-control" id="multiImg"
-                                                multiple="">
-                                            <div class="row" id="preview_img"> </div>
+                                            <input type="text" name="max_price" value="{{ $property->max_price }}" class="form-control" id="max_price">
                                         </div>
                                     </div>
                                 </div>
@@ -69,25 +49,25 @@
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="bedrooms" class="form-label">Bedrooms</label>
-                                            <input type="text" name="bedrooms" class="form-control" id="bedrooms">
+                                            <input type="text" name="bedrooms" value="{{ $property->bedrooms }}" class="form-control" id="bedrooms">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="bathrooms" class="form-label">Bathrooms</label>
-                                            <input type="text" name="bathrooms" class="form-control" id="bathrooms">
+                                            <input type="text" name="bathrooms" value="{{ $property->bathrooms }}" class="form-control" id="bathrooms">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="garage" class="form-label">Garage</label>
-                                            <input type="text" name="garage" class="form-control" id="garage">
+                                            <input type="text" name="garage" value="{{ $property->garage }}" class="form-control" id="garage">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="garage_size" class="form-label">Garage Size</label>
-                                            <input type="text" name="garage_size" class="form-control"
+                                            <input type="text" name="garage_size" value="{{ $property->garage_size }}" class="form-control"
                                                 id="garage_size">
                                         </div>
                                     </div>
@@ -97,25 +77,25 @@
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="address" class="form-label">Address</label>
-                                            <input type="text" name="address" class="form-control" id="address">
+                                            <input type="text" name="address" value="{{ $property->address }}" class="form-control" id="address">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="city" class="form-label">City</label>
-                                            <input type="text" name="city" class="form-control" id="city">
+                                            <input type="text" name="city" value="{{ $property->city }}" class="form-control" id="city">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="state" class="form-label">State</label>
-                                            <input type="text" name="state" class="form-control" id="state">
+                                            <input type="text" name="state" value="{{ $property->state }}" class="form-control" id="state">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group mb-3">
                                             <label for="postal_code" class="form-label">Postal Code</label>
-                                            <input type="text" name="postal_code" class="form-control"
+                                            <input type="text" name="postal_code" value="{{ $property->postal_code }}" class="form-control"
                                                 id="postal_code">
                                         </div>
                                     </div>
@@ -125,19 +105,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
                                             <label for="size" class="form-label">Property Size</label>
-                                            <input type="text" name="size" class="form-control" id="size">
+                                            <input type="text" name="size" value="{{ $property->size }}" class="form-control" id="size">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
                                             <label for="video" class="form-label">Property Video</label>
-                                            <input type="text" name="video" class="form-control" id="video">
+                                            <input type="text" name="video" value="{{ $property->video }}" class="form-control" id="video">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group mb-3">
                                             <label for="neighbourhood" class="form-label">Neighbourhood</label>
-                                            <input type="text" name="neighbourhood" class="form-control"
+                                            <input type="text" name="neighbourhood" value="{{ $property->neighbourhood }}" class="form-control"
                                                 id="neighbourhood">
                                         </div>
                                     </div>
@@ -147,7 +127,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="latitude" class="form-label">Latitude</label>
-                                            <input type="text" name="latitude" class="form-control" id="latitude">
+                                            <input type="text" name="latitude" value="{{ $property->latitude }}" class="form-control" id="latitude">
                                             <a href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                 target="_blank">Go here to get Latitude from address</a>
                                         </div>
@@ -155,7 +135,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label for="longitude" class="form-label">Longitude</label>
-                                            <input type="text" name="longitude" class="form-control" id="longitude">
+                                            <input type="text" name="longitude" value="{{ $property->longitude }}" class="form-control" id="longitude">
                                             <a href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                 target="_blank">Go here to get Longitude from address</a>
                                         </div>
@@ -203,7 +183,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="latitude" class="form-label">Short Description</label>
-                                            <textarea name="short_des" class="form-control" rows="3"></textarea>
+                                            <textarea name="short_des" class="form-control" rows="3">{{ $property->short_des }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -212,7 +192,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label for="latitude" class="form-label">Long Description</label>
-                                            <textarea name="long_des" class="form-control" id="tinymceExample" rows="3"></textarea>
+                                            <textarea name="long_des" class="form-control" id="tinymceExample" rows="3">{!! $property->long_des !!}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -234,82 +214,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row add_item">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="facility_name" class="form-label">Facilities </label>
-                                            <select name="facility_name[]" id="facility_name" class="form-control">
-                                                <option value="">Select Facility</option>
-                                                <option value="Hospital">Hospital</option>
-                                                <option value="SuperMarket">Super Market</option>
-                                                <option value="School">School</option>
-                                                <option value="Entertainment">Entertainment</option>
-                                                <option value="Pharmacy">Pharmacy</option>
-                                                <option value="Airport">Airport</option>
-                                                <option value="Railways">Railways</option>
-                                                <option value="Bus Stop">Bus Stop</option>
-                                                <option value="Beach">Beach</option>
-                                                <option value="Mall">Mall</option>
-                                                <option value="Bank">Bank</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
-                                            <label for="distance" class="form-label"> Distance </label>
-                                            <input type="text" name="distance[]" id="distance" class="form-control"
-                                                placeholder="Distance (Km)">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-4" style="padding-top: 30px;">
-                                        <a class="btn btn-inverse-success addeventmore"><i class="fa fa-plus-circle"></i>
-                                            Add More..</a>
-                                    </div>
-
-                                </div>
-
-                                <!--========== Start of add multiple class with ajax ==============-->
-                                <div style="visibility: hidden">
-                                    <div class="whole_extra_item_add" id="whole_extra_item_add">
-                                        <div class="whole_extra_item_delete" id="whole_extra_item_delete">
-                                            <div class="container mt-2">
-                                                <div class="row" style="margin-left:-25px;">
-                                                    <div class="form-group col-md-4">
-                                                        <label for="facility_name">Facilities</label>
-                                                        <select name="facility_name[]" id="facility_name"
-                                                            class="form-control">
-                                                            <option value="">Select Facility</option>
-                                                            <option value="Hospital">Hospital</option>
-                                                            <option value="SuperMarket">Super Market</option>
-                                                            <option value="School">School</option>
-                                                            <option value="Entertainment">Entertainment</option>
-                                                            <option value="Pharmacy">Pharmacy</option>
-                                                            <option value="Airport">Airport</option>
-                                                            <option value="Railways">Railways</option>
-                                                            <option value="Bus Stop">Bus Stop</option>
-                                                            <option value="Beach">Beach</option>
-                                                            <option value="Mall">Mall</option>
-                                                            <option value="Bank">Bank</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-4">
-                                                        <label for="distance">Distance</label>
-                                                        <input type="text" name="distance[]" id="distance"
-                                                            class="form-control" placeholder="Distance (Km)">
-                                                    </div>
-                                                    <div class="form-group col-md-4" style="padding-top: 20px">
-                                                        <span class="btn btn-inverse-success btn-sm addeventmore"><i
-                                                                class="fa fa-plus-circle">Add</i></span>
-                                                        <span class="btn btn-inverse-danger btn-sm removeeventmore"><i
-                                                                class="fa fa-minus-circle">Remove</i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                             </form>
