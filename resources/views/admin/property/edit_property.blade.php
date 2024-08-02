@@ -23,8 +23,8 @@
                                             <label for="icon" class="form-label">Propery Status</label>
                                             <select name="property_status" class="form-select" id="property_status">
                                                 <option selected disabled>Select Status</option>
-                                                <option value="rent">For Rent</option>
-                                                <option value="buy">For Buy</option>
+                                                <option value="rent" {{ $property->property_status == 'rent' ? 'selected' : ''}}>For Rent</option>
+                                                <option value="buy" {{ $property->property_status == 'buy' ? 'selected' : '' }}>For Buy</option>
                                             </select>
                                         </div>
                                     </div>
@@ -149,7 +149,7 @@
                                             <select name="ptype_id" class="form-select" id="ptype_id">
                                                 <option selected disabled>Select Property Type</option>
                                                 @foreach ($propertyTypes as $propertyType)
-                                                    <option value="{{ $propertyType->id }}">{{ $propertyType->name }}
+                                                    <option  value="{{ $propertyType->id }}" {{ $propertyType->id == $property->ptype_id ? 'selected' : ''}}>{{ $propertyType->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -161,7 +161,7 @@
                                             <select name="amenitie_id[]" class="js-example-basic-multiple form-select"
                                                 multiple="multiple" id="amenitie_id">
                                                 @foreach ($amenities as $amenity)
-                                                    <option value="{{ $amenity->id }}">{{ $amenity->name }}</option>
+                                                    <option value="{{ $amenity->id }}" {{ in_array($amenity->id,$amenitie_selected) ? 'selected' : '' }}>{{ $amenity->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -172,7 +172,7 @@
                                             <select name="agent_id" class="form-select" id="agent_id">
                                                 <option selected disabled>Select Agent</option>
                                                 @foreach ($activeAgents as $agent)
-                                                    <option value="{{ $agent->id }}">{{ $agent->name }}</option>
+                                                    <option value="{{ $agent->id }}" {{ $agent->id == $property->agent_id ? 'selected' : '' }}>{{ $agent->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -200,14 +200,14 @@
                                 <div class="mb-3">
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" name="featured" value="1" class="form-check-input"
-                                            id="checkInline1">
+                                            id="checkInline1" {{ $property->featured == '1' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="checkInline1">
                                             Features Property
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" name="hot" value="1" class="form-check-input"
-                                            id="checkInline">
+                                            id="checkInline" {{ $property->hot == '1' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="checkInline">
                                             Hot Property
                                         </label>

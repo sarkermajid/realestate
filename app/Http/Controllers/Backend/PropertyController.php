@@ -145,6 +145,9 @@ class PropertyController extends Controller
     public function EditProperty($id)
     {
         $property = Property::findOrfail($id);
+
+        $amenitie_selected = explode(',',$property->amenitie_id);
+
         $propertyTypes = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
         $activeAgents = User::where('status', 'active')->where('role','agent')->latest()->get();
@@ -153,7 +156,9 @@ class PropertyController extends Controller
             'property',
             'propertyTypes',
             'amenities',
-            'activeAgents'));
+            'activeAgents',
+            'amenitie_selected'
+        ));
 
     }
 }
