@@ -8,9 +8,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Edit Property</h6>
-                            <form method="POST" action="{{ route('store.property') }}" class="forms-sample" id="myForm"
+                            <form method="POST" action="{{ route('update.property') }}" class="forms-sample" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="property_id" value="{{ $property->id }}">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">

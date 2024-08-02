@@ -38,17 +38,13 @@ class PropertyController extends Controller
 
     public function StoreProperty(Request $request)
     {
-        // dd($request->all());
         $property = new Property();
         $property->ptype_id = $request->ptype_id;
-
         $amenitie_id = $request->amenitie_id;
         $property->amenitie_id = implode(',',$amenitie_id);
-
         $property->agent_id = $request->agent_id;
         $property->name = $request->name;
         $property->slug = strtolower(str_replace(' ','-',$request->name));
-
         $property->code = IdGenerator::generate([
             'table'=>'properties',
             'field'=>'code',
@@ -76,23 +72,19 @@ class PropertyController extends Controller
         $property->max_price = $request->max_price;
         $property->short_des = $request->short_des;
         $property->long_des = $request->long_des;
-
         $property->bedrooms = $request->bedrooms;
         $property->bathrooms = $request->bathrooms;
         $property->garage = $request->garage;
         $property->garage_size = $request->garage_size;
         $property->size = $request->size;
         $property->video = $request->video;
-
         $property->address = $request->address;
         $property->city = $request->city;
         $property->state = $request->state;
         $property->postal_code = $request->postal_code;
         $property->neighbourhood = $request->neighbourhood;
-
         $property->latitude = $request->latitude;
         $property->longitude = $request->longitude;
-
         $property->featured = $request->featured;
         $property->hot = $request->hot;
         $property->status = 1;
@@ -160,5 +152,45 @@ class PropertyController extends Controller
             'amenitie_selected'
         ));
 
+    }
+
+    public function UpdateProperty(Request $request)
+    {
+        $property = Property::findOrFail($request->property_id);
+        $property->ptype_id = $request->ptype_id;
+        $amenitie_id = $request->amenitie_id;
+        $property->amenitie_id = implode(',',$amenitie_id);
+        $property->agent_id = $request->agent_id;
+        $property->name = $request->name;
+        $property->slug = strtolower(str_replace(' ','-',$request->name));
+        $property->property_status = $request->property_status;
+        $property->min_price = $request->min_price;
+        $property->max_price = $request->max_price;
+        $property->short_des = $request->short_des;
+        $property->long_des = $request->long_des;
+        $property->bedrooms = $request->bedrooms;
+        $property->bathrooms = $request->bathrooms;
+        $property->garage = $request->garage;
+        $property->garage_size = $request->garage_size;
+        $property->size = $request->size;
+        $property->video = $request->video;
+        $property->address = $request->address;
+        $property->city = $request->city;
+        $property->state = $request->state;
+        $property->postal_code = $request->postal_code;
+        $property->neighbourhood = $request->neighbourhood;
+        $property->latitude = $request->latitude;
+        $property->longitude = $request->longitude;
+        $property->featured = $request->featured;
+        $property->hot = $request->hot;
+        $property->status = 1;
+        $property->created_at = Carbon::now();
+        $property->update();
+
+        $notification = array(
+            'message' => 'Property Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.property')->with($notification);
     }
 }
