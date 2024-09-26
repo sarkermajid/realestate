@@ -183,8 +183,7 @@ class PropertyController extends Controller
         $property->longitude = $request->longitude;
         $property->featured = $request->featured;
         $property->hot = $request->hot;
-        $property->status = 1;
-        $property->created_at = Carbon::now();
+        $property->updated_at = Carbon::now();
         $property->update();
 
         $notification = array(
