@@ -225,6 +225,46 @@
         </div>
     </div>
 
+    {{-- /// Property Thumbnail Image --}}
+    {{-- @php
+        dd($property->property_thumbnail);
+    @endphp --}}
+    <div class="page-content" style="margin-top:-35px;">
+        <div class="row profile-body">
+            <div class="col-md-12 col-xl-12 middle-wrapper">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Edit Property Thumbnail Image</h6>
+                            <form method="POST" action="{{ route('update.property.thumbnail') }}" class="forms-sample" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                <input type="hidden" name="old_property_thumbnail" value="{{ $property->property_thumbnail }}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label for="min_price" class="form-label">Thumbnail Image</label>
+                                            <input type="file" name="property_thumbnail" class="form-control"
+                                                id="propertyThumbnail">
+
+                                            <img src="" id="showPhoto">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <img src="{{ asset($property->property_thumbnail) }}" alt="" style="height: 100px; width:100px;">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- js validation error show --}}
     <script type="text/javascript">
         $(document).ready(function() {

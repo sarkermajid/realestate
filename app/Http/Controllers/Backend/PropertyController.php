@@ -192,4 +192,39 @@ class PropertyController extends Controller
         );
         return redirect()->route('all.property')->with($notification);
     }
+
+    public function UpdatePropertyThumbnail(Request $request)
+    {
+        $property_id = $request->property_id;
+        $old_property_thumbnail = $request->old_property_thumbnail;
+
+        $property = Property::findOrFail($property_id);
+        // Image upload with resize
+        if ($request->hasFile('property_thumbnail')) {
+            $image = $request->file('property_thumbnail');
+            $imageName = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/property/thumbnail', $imageName);
+
+            // Initialize ImageManager instance
+            $imageManager =  new ImageManager(new Driver());
+            $img = $imageManager->read('uploads/property/thumbnail/' . $imageName);
+            $img->resize(370, 250)->save('uploads/property/thumbnail/' . $imageName);
+
+            $save_url = 'uploads/property/thumbnail/' . $imageName;
+            $property->property_thumbnail = $save_url;
+            $property->updated_at = Carbon::now();
+            $property->update();
+        }
+
+        if(file_exists($old_property_thumbnail)){
+            unlink($old_property_thumbnail);
+        }
+
+        $notification = array(
+            'message' => 'Property Thumbnail Image Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.property')->with($notification);
+
+    }
 }
