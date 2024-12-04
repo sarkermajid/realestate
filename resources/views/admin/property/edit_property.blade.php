@@ -226,9 +226,7 @@
     </div>
 
     {{-- /// Property Thumbnail Image --}}
-    {{-- @php
-        dd($property->property_thumbnail);
-    @endphp --}}
+
     <div class="page-content" style="margin-top:-35px;">
         <div class="row profile-body">
             <div class="col-md-12 col-xl-12 middle-wrapper">
@@ -260,6 +258,78 @@
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Property Multiple Image --}}
+
+    <div class="page-content" style="margin-top: -35px;">
+        <div class="row profile-body">
+            <div class="col-md-12 col-xl-12 middle-wrapper">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Edit Multi Images </h6>
+                            <form method="post" action="" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Sl</th>
+                                                <th>Image</th>
+                                                <th>Change Image </th>
+                                                <th>Delete </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($multiImages as $key => $img)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td class="py-1">
+                                                        <img src="{{ asset($img->image) }}" alt="image" style="width:50px; height:50px;">
+                                                    </td>
+                                                    <td>
+                                                        <input type="file" class="form-control" name="multi_img[{{ $img->id }}]">
+                                                    </td>
+                                                    <td>
+                                                        <input type="submit" class="btn btn-primary px-4"
+                                                            value="Update Image">
+
+                                                        <a href="" class="btn btn-danger" id="delete">Delete </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+
+
+                            <form method="post" action="" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="imageid" value="{{ $property->id }}">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="file" class="form-control" name="multi_img">
+                                            </td>
+
+                                            <td>
+                                                <input type="submit" class="btn btn-info px-4" value="Add Image">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

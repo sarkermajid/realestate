@@ -143,13 +143,14 @@ class PropertyController extends Controller
         $propertyTypes = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
         $activeAgents = User::where('status', 'active')->where('role','agent')->latest()->get();
-
+        $multiImages = MultiImage::where('property_id', $property->id)->get();
         return view('admin.property.edit_property',compact(
             'property',
             'propertyTypes',
             'amenities',
             'activeAgents',
-            'amenitie_selected'
+            'amenitie_selected',
+            'multiImages'
         ));
 
     }
