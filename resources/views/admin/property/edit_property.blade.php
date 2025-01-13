@@ -272,7 +272,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="card-title">Edit Multi Images </h6>
-                            <form method="post" action="" id="myForm"
+                            <form method="post" action="{{ route('update.property.multiimage') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="table-responsive">
@@ -282,7 +282,7 @@
                                                 <th>Sl</th>
                                                 <th>Image</th>
                                                 <th>Change Image </th>
-                                                <th>Delete </th>
+                                                <th>Action </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -299,7 +299,7 @@
                                                         <input type="submit" class="btn btn-primary px-4"
                                                             value="Update Image">
 
-                                                        <a href="" class="btn btn-danger" id="delete">Delete </a>
+                                                        <a href="{{ route('delete.property.multiimage',['id'=>$img->id]) }}" class="btn btn-danger" id="delete">Delete </a>
                                                     </td>
                                                 </tr>
                                             @endforeach

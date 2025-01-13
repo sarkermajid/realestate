@@ -12,6 +12,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Intervention\Image\ImageManager;
+// use Intervention\Image\Facades\Image;
+// use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Http\Request;
 
@@ -227,5 +229,45 @@ class PropertyController extends Controller
         );
         return redirect()->route('all.property')->with($notification);
 
+    }
+
+    public function UpdatePropertyMultiimage(Request $request)
+    {
+        $images = $request->multi_img;
+        foreach($images as $id => $image){
+            $imgDel = MultiImage::findOrFail($id);
+            if($imgDel){
+                unlink($imgDel->image);
+            }
+
+            $make_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/property/multi-images'), $make_name);
+            $upload_path = 'uploads/property/multi-images/' . $make_name;
+
+            MultiImage::where('id',$id)->update([
+                'image' => $upload_path,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Property Multiimages Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function DeletePropertyMultiimage($id)
+    {
+        $multiImage = MultiImage::findOrFail($id);
+        if(file_exists($multiImage->image)){
+            unlink($multiImage->image);
+        }
+        $multiImage->delete();
+        $notification = array(
+           'message' => 'Property Multiimage Deleted Successfully',
+            'alert-type' =>'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }
